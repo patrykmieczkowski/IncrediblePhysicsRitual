@@ -15,6 +15,7 @@ import butterknife.Bind;
 /**
  * Created by Patryk Mieczkowski on 30.01.16.
  */
+@Deprecated
 public class CoilGameFragment extends Fragment {
 
     @Bind(R.id.piorun)
@@ -42,7 +43,6 @@ public class CoilGameFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        animationDrawable.start();
-        ((MainActivity)getActivity()).callTimer();
 
     }
 }

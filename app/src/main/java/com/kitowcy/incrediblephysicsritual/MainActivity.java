@@ -9,6 +9,7 @@ import android.util.Log;
 import android.widget.SeekBar;
 
 import com.kitowcy.incrediblephysicsritual.fragments.CoilGameFragment;
+import com.kitowcy.incrediblephysicsritual.fragments.QuestionBaseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.StartScreenFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.TimeUpCallback;
 import com.kitowcy.incrediblephysicsritual.utils.Config;
@@ -110,9 +111,9 @@ public class MainActivity extends AppCompatActivity {
                 selectedFragment = Config.FRAGTMENT_START;
                 FragmentSwitcher.switchToFragment(this, StartScreenFragment.newInstace(), R.id.main_placeholder);
                 break;
-            case Config.FRAGTMENT_COIL_GAME:
-                selectedFragment = Config.FRAGTMENT_COIL_GAME;
-                FragmentSwitcher.switchToFragment(this, CoilGameFragment.newInstace(), R.id.main_placeholder);
+            case Config.FRAGMENT_QUESTION_BASE:
+                selectedFragment = Config.FRAGMENT_QUESTION_BASE;
+                FragmentSwitcher.switchToFragment(this, QuestionBaseFragment.newInstace(), R.id.main_placeholder);
                 break;
             default:
                 selectedFragment = Config.FRAGTMENT_START;
@@ -131,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
                         .switchToFragment(MainActivity.this,
                                 switcher ?
                                         StartScreenFragment.newInstace()
-                                        : CoilGameFragment.newInstace()
+                                        : QuestionBaseFragment.newInstace()
                                 , R.id.main_placeholder);
 
             }

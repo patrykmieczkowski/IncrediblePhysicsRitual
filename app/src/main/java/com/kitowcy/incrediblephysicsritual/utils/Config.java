@@ -6,6 +6,6 @@ package com.kitowcy.incrediblephysicsritual.utils;
 public class Config {
 
     public static final int FRAGTMENT_START = 0;
-    public static final int FRAGTMENT_COIL_GAME = 1;
+    public static final int FRAGMENT_QUESTION_BASE = 1;
 
 }

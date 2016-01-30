@@ -45,7 +45,7 @@ public class StartScreenFragment extends Fragment {
     public void startPlay() {
         Log.d(TAG, "startPlay()");
         if (getActivity() instanceof MainActivity) {
-            ((MainActivity) getActivity()).setFragment(Config.FRAGTMENT_COIL_GAME);
+            ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
         }
     }
 }
