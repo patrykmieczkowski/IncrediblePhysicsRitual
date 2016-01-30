@@ -87,7 +87,9 @@
     <orderEntry type="library" exported="" name="support-v4-23.1.1" level="project" />
     <orderEntry type="library" exported="" name="rxjava-1.0.12" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-23.1.1" level="project" />
+    <orderEntry type="library" exported="" name="realm-gradle-plugin-0.87.4" level="project" />
     <orderEntry type="library" exported="" name="butterknife-7.0.1" level="project" />
+    <orderEntry type="library" exported="" name="android-apt-1.8" level="project" />
     <orderEntry type="library" exported="" name="rxandroid-0.25.0" level="project" />
   </component>
 </module>
