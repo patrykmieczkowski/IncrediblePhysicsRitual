@@ -8,7 +8,37 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Tesla Coil game !"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:text="Tesla Coil game !" />
+
+    <ImageView
+        android:id="@+id/cewka_left"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/cewka" />
+
+    <ImageView
+        android:id="@+id/cewka_right"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/cewka" />
+
+    <ImageView
+        android:id="@+id/piorun"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/cewka_left"
+        android:layout_toStartOf="@id/cewka_right"
+        android:src="@drawable/pior_1" />
 
 </RelativeLayout>
