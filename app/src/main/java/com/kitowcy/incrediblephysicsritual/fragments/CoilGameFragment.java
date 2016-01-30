@@ -1,13 +1,13 @@
 package com.kitowcy.incrediblephysicsritual.fragments;
 
 import android.app.Fragment;
-import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.kitowcy.incrediblephysicsritual.MainActivity;
 import com.kitowcy.incrediblephysicsritual.R;
 
 import butterknife.Bind;
@@ -42,6 +42,7 @@ public class CoilGameFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 //        animationDrawable.start();
+        ((MainActivity)getActivity()).callTimer();
 
     }
 }
