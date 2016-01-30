@@ -3,40 +3,31 @@ package com.kitowcy.incrediblephysicsritual;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.SeekBar;
 
-import com.kitowcy.incrediblephysicsritual.fragments.CoilGameFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.QuestionBaseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.StartScreenFragment;
-import com.kitowcy.incrediblephysicsritual.fragments.TimeUpCallback;
 import com.kitowcy.incrediblephysicsritual.model.RealmQuestion;
 import com.kitowcy.incrediblephysicsritual.utils.Config;
 import com.kitowcy.incrediblephysicsritual.utils.DataFromFileLoadedCallback;
 import com.kitowcy.incrediblephysicsritual.utils.FragmentSwitcher;
 import com.kitowcy.incrediblephysicsritual.utils.LoadData;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-import butterknife.Bind;
 import butterknife.ButterKnife;
 import io.realm.Realm;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
     private int selectedFragment = Config.FRAGTMENT_START;
-    @Bind(R.id.seekBar)
-    SeekBar seekBar;
 
-    rx.Subscription seekBarSubscription;
+    public List<Integer> mySmallList = new ArrayList<>();
+    public int questionNumber = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             for (RealmQuestion realmQuestion : realmQuestionList) {
                 Log.d(TAG, "RealmQuestion: " + realmQuestion.getAnswer() + ", " + realmQuestion.getQuestion());
             }
+            realm.close();
         }
     }
 
@@ -69,42 +61,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void restartSeekbar(@Nullable final TimeUpCallback endCallback) {
-        seekBar.setMax(5000);
-        seekBar.getThumb().mutate().setAlpha(0);
-//        seekBar.setColo
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                seekBarSubscription = rx.Observable.interval(10, TimeUnit.MILLISECONDS)
-                        .observeOn(AndroidSchedulers.mainThread())
-                        .subscribe(new Subscriber<Long>() {
-                            @Override
-                            public void onCompleted() {
-                                Log.d(TAG, "onCompleted: ");
-                            }
-
-                            @Override
-                            public void onError(Throwable e) {
-                                Log.d(TAG, "onError: " + e.getMessage());
-                                e.printStackTrace();
-                            }
-
-                            @Override
-                            public void onNext(Long aLong) {
-//                                Log.d(TAG, "onNext: ");
-                                seekBar.setProgress((int) (5000 - aLong * 10));
-                                if (aLong > 499) {
-                                    seekBarSubscription.unsubscribe();
-                                    if (endCallback != null) endCallback.call();
-                                }
-                            }
-                        });
-            }
-        }, 100);
-    }
-
-    boolean switcher;
 
     @Override
     protected void onResume() {
@@ -113,8 +69,10 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        seekBarSubscription.unsubscribe();
-        seekBar.setProgress(0);
+//        if (seekBarSubscription != null) {
+//            seekBarSubscription.unsubscribe();
+//            seekBar.setProgress(0);
+//        }
 
         super.onStop();
     }
@@ -143,22 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void callTimer() {
-        restartSeekbar(new TimeUpCallback() {
-            @Override
-            public void call() {
-                switcher = !switcher;
-                FragmentSwitcher
-                        .switchToFragment(MainActivity.this,
-                                switcher ?
-                                        StartScreenFragment.newInstace()
-                                        : QuestionBaseFragment.newInstace()
-                                , R.id.main_placeholder);
-
-            }
-        });
-    }
-
     private void copyDataToRealm() {
         Log.d(TAG, "copyDataToRealm");
 
@@ -174,4 +116,73 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    public void prepareQuestions() {
+
+        Realm realm = Realm.getInstance(this);
+        int mylistsize = realm.where(RealmQuestion.class).findAll().size();
+
+        for (int x = 0; x < mylistsize; x++) {
+            mySmallList.add(x);
+        }
+
+        Log.d(TAG, "prepareQuestions: smallList: " + mySmallList.toString());
+        Collections.shuffle(mySmallList);
+        Log.d(TAG, "prepareQuestions: smallList randomized " + mySmallList.toString());
+
+    }
+
+//    public void callTimer() {
+//        restartSeekbar(new TimeUpCallback() {
+//            @Override
+//            public void call() {
+//                switcher = !switcher;
+//                FragmentSwitcher
+//                        .switchToFragment(MainActivity.this,
+//                                switcher ?
+//                                        StartScreenFragment.newInstace()
+//                                        : QuestionBaseFragment.newInstace()
+//                                , R.id.main_placeholder);
+//
+//            }
+//        });
+//    }
+//
+//    public void restartSeekbar(@Nullable final TimeUpCallback endCallback) {
+//        seekBar.setMax(5000);
+//        seekBar.getThumb().mutate().setAlpha(0);
+////        seekBar.setColo
+//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                seekBarSubscription = rx.Observable.interval(10, TimeUnit.MILLISECONDS)
+//                        .observeOn(AndroidSchedulers.mainThread())
+//                        .subscribe(new Subscriber<Long>() {
+//                            @Override
+//                            public void onCompleted() {
+//                                Log.d(TAG, "onCompleted: ");
+//                            }
+//
+//                            @Override
+//                            public void onError(Throwable e) {
+//                                Log.d(TAG, "onError: " + e.getMessage());
+//                                e.printStackTrace();
+//                            }
+//
+//                            @Override
+//                            public void onNext(Long aLong) {
+////                                Log.d(TAG, "onNext: ");
+//                                seekBar.setProgress((int) (5000 - aLong * 10));
+//                                if (aLong > 499) {
+//                                    seekBarSubscription.unsubscribe();
+//                                    if (endCallback != null) endCallback.call();
+//                                }
+//                            }
+//                        });
+//            }
+//        }, 100);
+//    }
+//
+//    boolean switcher;
+
 }

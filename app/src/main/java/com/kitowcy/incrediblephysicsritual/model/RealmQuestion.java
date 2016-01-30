@@ -11,24 +11,24 @@ import io.realm.annotations.PrimaryKey;
 public class RealmQuestion extends RealmObject {
 
     @PrimaryKey
-    private String id;
+    private int id;
     private String question;
     private int answer;
 
     public RealmQuestion() {
     }
 
-    public RealmQuestion(String question, int answer) {
-        this.id = UUID.randomUUID().toString();
+    public RealmQuestion(int id, String question, int answer) {
+        this.id = id;
         this.question = question;
         this.answer = answer;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

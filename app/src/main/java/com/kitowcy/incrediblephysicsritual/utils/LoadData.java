@@ -29,13 +29,14 @@ public class LoadData {
         BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
         String singleRecord = "";
+        int counter = 0;
 
         try {
             while ((singleRecord = bufferedReader.readLine()) != null) {
 
                 String[] values = singleRecord.split(";");
-                realm.copyToRealmOrUpdate(new RealmQuestion(values[0], Integer.valueOf(values[1])));
-
+                realm.copyToRealmOrUpdate(new RealmQuestion(counter, values[0], Integer.valueOf(values[1])));
+                counter++;
             }
         } catch (IOException e) {
             e.printStackTrace();

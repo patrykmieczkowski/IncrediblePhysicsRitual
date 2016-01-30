@@ -43,6 +43,7 @@ public class StartScreenFragment extends Fragment {
     public void startPlay() {
         Log.d(TAG, "startPlay()");
         if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).prepareQuestions();
             ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
         }
     }

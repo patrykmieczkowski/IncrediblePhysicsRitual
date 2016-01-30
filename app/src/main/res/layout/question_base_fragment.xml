@@ -6,13 +6,19 @@
     android:background="#d3d3d3"
     tools:context="com.kitowcy.incrediblephysicsritual.MainActivity">
 
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true" />
+
     <LinearLayout
         android:id="@+id/answers_layout"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="20dp"
+        android:layout_above="@id/seekBar"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="40dp"
         android:layout_marginStart="40dp"
         android:orientation="horizontal"
@@ -53,12 +59,12 @@
 
         <TextView
             android:id="@+id/question_text"
-            android:layout_centerInParent="true"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
             android:gravity="center"
             android:textSize="24sp"
-            android:layout_height="wrap_content"
-            tools:text="I never think of the future.\nIt comes soon enough."/>
+            tools:text="I never think of the future.\nIt comes soon enough." />
 
     </RelativeLayout>
 
