@@ -156,7 +156,7 @@ public class QuestionBaseFragment extends Fragment {
         });
 
         seekBar.getThumb().mutate().setAlpha(0);
-        seekBar.setMax(5000);
+        seekBar.setMax(10000);
 //        ((MainActivity) getActivity()).callTimer();
 
         launchSeekBar(new TimeUpCallback() {
@@ -209,8 +209,8 @@ public class QuestionBaseFragment extends Fragment {
                             @Override
                             public void onNext(Long aLong) {
 //                                Log.d(TAG, "onNext: ");
-                                seekBar.setProgress((int) (5000 - aLong * 10));
-                                if (aLong > 499) {
+                                seekBar.setProgress((int) (10000 - aLong * 10));
+                                if (aLong > 999) {
                                     seekBarSubscription.unsubscribe();
                                     if (endCallback != null) endCallback.call();
                                 }
@@ -223,7 +223,6 @@ public class QuestionBaseFragment extends Fragment {
     private void youLose() {
         Log.d(TAG, "youLose :(");
 
-        ((MainActivity) getActivity()).questionNumber = 0;
-        ((MainActivity) getActivity()).setFragment(Config.FRAGTMENT_START);
+        ((MainActivity)getActivity()).setFragment(Config.FRAGMENT_LOSE);
     }
 }

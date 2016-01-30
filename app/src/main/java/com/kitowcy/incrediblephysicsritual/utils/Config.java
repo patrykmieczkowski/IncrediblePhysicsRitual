@@ -7,5 +7,7 @@ public class Config {
 
     public static final int FRAGTMENT_START = 0;
     public static final int FRAGMENT_QUESTION_BASE = 1;
+    public static final int FRAGMENT_LOSE = 2;
+
 
 }

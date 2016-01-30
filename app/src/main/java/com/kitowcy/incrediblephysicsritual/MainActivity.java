@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.kitowcy.incrediblephysicsritual.fragments.LoseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.QuestionBaseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.StartScreenFragment;
 import com.kitowcy.incrediblephysicsritual.model.RealmQuestion;
@@ -92,6 +93,10 @@ public class MainActivity extends AppCompatActivity {
             case Config.FRAGMENT_QUESTION_BASE:
                 selectedFragment = Config.FRAGMENT_QUESTION_BASE;
                 FragmentSwitcher.switchToFragment(this, QuestionBaseFragment.newInstace(), R.id.main_placeholder);
+                break;
+            case Config.FRAGMENT_LOSE:
+                selectedFragment = Config.FRAGMENT_LOSE;
+                FragmentSwitcher.switchToFragment(this, LoseFragment.newInstace(), R.id.main_placeholder);
                 break;
             default:
                 selectedFragment = Config.FRAGTMENT_START;
