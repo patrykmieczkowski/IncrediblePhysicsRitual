@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
         Realm realm = Realm.getInstance(this);
         int mylistsize = realm.where(RealmQuestion.class).findAll().size();
 
+        mySmallList.clear();
+
         for (int x = 0; x < mylistsize; x++) {
             mySmallList.add(x);
         }

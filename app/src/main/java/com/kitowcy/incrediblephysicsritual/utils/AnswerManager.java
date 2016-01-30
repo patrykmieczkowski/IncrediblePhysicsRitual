@@ -33,6 +33,16 @@ public class AnswerManager {
             case 1:
                 return R.drawable.tesla;
             case 2:
+                return R.drawable.newton;
+            case 3:
+                return R.drawable.koperek;
+            case 4:
+                return R.drawable.curie;
+            case 5:
+                return R.drawable.szrodinger;
+            case 6:
+                return R.drawable.edison;
+            case 7:
                 return R.drawable.student;
             default:
                 return R.drawable.einst;

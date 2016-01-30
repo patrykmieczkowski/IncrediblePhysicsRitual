@@ -19,7 +19,8 @@
         android:layout_marginEnd="75dp"
         android:layout_marginTop="83dp"
         android:layout_toStartOf="@+id/relativeLayout"
-        android:src="@drawable/button_add" />
+        android:src="@drawable/button_add"
+        android:visibility="gone" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -33,7 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
-            android:src="@drawable/circle" />
+            android:src="@drawable/circle_0" />
 
         <ImageView
             android:id="@+id/main_button_play"

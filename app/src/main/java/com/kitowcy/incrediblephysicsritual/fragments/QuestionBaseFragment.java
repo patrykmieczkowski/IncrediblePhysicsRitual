@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kitowcy.incrediblephysicsritual.MainActivity;
 import com.kitowcy.incrediblephysicsritual.R;
@@ -23,7 +24,9 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -65,6 +68,7 @@ public class QuestionBaseFragment extends Fragment {
     }
 
     rx.Subscription seekBarSubscription;
+//    Map<Integer, Boolean> answerMap = new HashMap<>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -85,7 +89,7 @@ public class QuestionBaseFragment extends Fragment {
 
         int correctanswer = realmQuestion.getAnswer();
         List<Integer> mylist = new ArrayList<>();
-        for (int h = 0; h < 3; h++) {
+        for (int h = 0; h < 8; h++) {
             mylist.add(h);
         }
         Log.d(TAG, "onViewCreated: list size before " + mylist.size());
@@ -95,18 +99,61 @@ public class QuestionBaseFragment extends Fragment {
         int secondN = mylist.get(0);
         int thirdN = mylist.get(1);
 
-        int first = AnswerManager.giveMeAnswerResource(correctanswer);
+        final int first = AnswerManager.giveMeAnswerResource(correctanswer);
         int second = AnswerManager.giveMeAnswerResource(secondN);
         int third = AnswerManager.giveMeAnswerResource(thirdN);
 
-        firstImage.setImageResource(first);
-        secondImage.setImageResource(second);
-        thirdImage.setImageResource(third);
+//        answerMap.put(first, true);
+//        answerMap.put(second, false);
+//        answerMap.put(third, false);
 
-        scoreText.setText(String.valueOf(mainActivity.questionNumber));
+        final List<Integer> littleResourList = new ArrayList<>();
+        littleResourList.add(first);
+        littleResourList.add(second);
+        littleResourList.add(third);
+        Collections.shuffle(littleResourList);
+
+        firstImage.setImageResource(littleResourList.get(0));
+        secondImage.setImageResource(littleResourList.get(1));
+        thirdImage.setImageResource(littleResourList.get(2));
+
+        if (mainActivity.questionNumber != 0) {
+            scoreText.setText(String.valueOf(mainActivity.questionNumber));
+        }
         questionText.setText(realmQuestion.getQuestion());
 
         realm.close();
+
+        firstImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (littleResourList.get(0) == first) {
+                    onImageClick(true);
+                } else {
+                    onImageClick(false);
+                }
+            }
+        });
+        secondImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (littleResourList.get(1) == first) {
+                    onImageClick(true);
+                } else {
+                    onImageClick(false);
+                }
+            }
+        });
+        thirdImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (littleResourList.get(2) == first) {
+                    onImageClick(true);
+                } else {
+                    onImageClick(false);
+                }
+            }
+        });
 
         seekBar.getThumb().mutate().setAlpha(0);
         seekBar.setMax(5000);
@@ -115,8 +162,7 @@ public class QuestionBaseFragment extends Fragment {
         launchSeekBar(new TimeUpCallback() {
             @Override
             public void call() {
-                mainActivity.questionNumber = 0;
-                mainActivity.setFragment(Config.FRAGTMENT_START);
+                youLose();
             }
         });
     }
@@ -130,10 +176,15 @@ public class QuestionBaseFragment extends Fragment {
         super.onDestroy();
     }
 
-    @OnClick(R.id.second_image)
-    public void onImageClick() {
-        ((MainActivity) getActivity()).questionNumber++;
-        ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
+    public void onImageClick(boolean status) {
+
+        Toast.makeText(getActivity(), String.valueOf(status), Toast.LENGTH_SHORT).show();
+        if (status) {
+            ((MainActivity) getActivity()).questionNumber++;
+            ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
+        } else {
+            youLose();
+        }
     }
 
     private void launchSeekBar(@Nullable final TimeUpCallback endCallback) {
@@ -167,5 +218,12 @@ public class QuestionBaseFragment extends Fragment {
                         });
             }
         }, 100);
+    }
+
+    private void youLose() {
+        Log.d(TAG, "youLose :(");
+
+        ((MainActivity) getActivity()).questionNumber = 0;
+        ((MainActivity) getActivity()).setFragment(Config.FRAGTMENT_START);
     }
 }
