@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.kitowcy.incrediblephysicsritual.MainActivity;
@@ -33,6 +34,9 @@ public class StartScreenFragment extends Fragment {
     @Bind(R.id.score_text_main)
     TextView scoreTextMain;
 
+    @Bind(R.id.transmutation_circle)
+    ImageView transmutationCircle;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.start_screen_fragment, container, false);
@@ -50,6 +54,7 @@ public class StartScreenFragment extends Fragment {
 
         if (currentBest != 0) {
             scoreTextMain.setText(String.valueOf(currentBest));
+            setImageForTransmutationCircle(currentBest);
         }
 
     }
@@ -61,5 +66,26 @@ public class StartScreenFragment extends Fragment {
             ((MainActivity) getActivity()).prepareQuestions();
             ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
         }
+    }
+
+    @OnClick(R.id.button_team)
+    public void meetTheTeam() {
+        ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_MEET_THE_TEAM);
+    }
+
+    private void setImageForTransmutationCircle(int score) {
+
+        if (score < 6) {
+            transmutationCircle.setImageResource(R.drawable.circle_1);
+        } else if (score >= 6 && score <= 15) {
+            transmutationCircle.setImageResource(R.drawable.circle_2);
+        } else if (score >= 16 && score <= 30) {
+            transmutationCircle.setImageResource(R.drawable.circle_3);
+        } else if (score >= 31 && score <= 50) {
+            transmutationCircle.setImageResource(R.drawable.circle_4);
+        } else if (score >= 51 && score <= 80) {
+            transmutationCircle.setImageResource(R.drawable.circle_5);
+        }
+
     }
 }

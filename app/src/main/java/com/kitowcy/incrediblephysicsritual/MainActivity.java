@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.kitowcy.incrediblephysicsritual.fragments.LoseFragment;
+import com.kitowcy.incrediblephysicsritual.fragments.MeetTheTeamFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.QuestionBaseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.StartScreenFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.StoryFragment;
@@ -103,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
             case Config.FRAGMENT_STORY:
                 selectedFragment = Config.FRAGMENT_STORY;
                 FragmentSwitcher.switchToFragment(this, StoryFragment.newInstace(), R.id.main_placeholder);
+                break;
+            case Config.FRAGMENT_MEET_THE_TEAM:
+                selectedFragment = Config.FRAGMENT_MEET_THE_TEAM;
+                FragmentSwitcher.switchToFragment(this, MeetTheTeamFragment.newInstace(), R.id.main_placeholder);
                 break;
             default:
                 selectedFragment = Config.FRAGTMENT_START;

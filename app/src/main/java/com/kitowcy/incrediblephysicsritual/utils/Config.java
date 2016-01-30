@@ -9,6 +9,7 @@ public class Config {
     public static final int FRAGMENT_QUESTION_BASE = 1;
     public static final int FRAGMENT_LOSE = 2;
     public static final int FRAGMENT_STORY = 3;
+    public static final int FRAGMENT_MEET_THE_TEAM = 4;
 
 
 }

@@ -13,14 +13,14 @@
         android:src="@drawable/background" />
 
     <ImageView
+        android:id="@+id/button_team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="75dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginTop="83dp"
         android:layout_toStartOf="@+id/relativeLayout"
-        android:src="@drawable/button_add"
-        android:visibility="gone" />
+        android:src="@drawable/button_add" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
@@ -31,6 +31,7 @@
         android:layout_marginEnd="60dp">
 
         <ImageView
+            android:id="@+id/transmutation_circle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_centerVertical="true"
