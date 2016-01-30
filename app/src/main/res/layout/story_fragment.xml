@@ -6,21 +6,10 @@
     tools:context="com.kitowcy.incrediblephysicsritual.MainActivity">
 
     <ImageView
+        android:id="@+id/story_image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/lost" />
-
-    <TextView
-        android:id="@+id/score_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="120dp"
-        android:layout_marginEnd="120dp"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        tools:text="Score: 50" />
+        android:src="@drawable/story_1" />
 
 </RelativeLayout>

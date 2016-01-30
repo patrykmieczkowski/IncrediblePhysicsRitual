@@ -9,6 +9,7 @@ import android.util.Log;
 import com.kitowcy.incrediblephysicsritual.fragments.LoseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.QuestionBaseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.StartScreenFragment;
+import com.kitowcy.incrediblephysicsritual.fragments.StoryFragment;
 import com.kitowcy.incrediblephysicsritual.model.RealmQuestion;
 import com.kitowcy.incrediblephysicsritual.utils.Config;
 import com.kitowcy.incrediblephysicsritual.utils.DataFromFileLoadedCallback;
@@ -25,7 +26,7 @@ import io.realm.Realm;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = MainActivity.class.getSimpleName();
-    private int selectedFragment = Config.FRAGTMENT_START;
+    private int selectedFragment = Config.FRAGMENT_STORY;
 
     public List<Integer> mySmallList = new ArrayList<>();
     public int questionNumber = 0;
@@ -70,17 +71,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-//        if (seekBarSubscription != null) {
-//            seekBarSubscription.unsubscribe();
-//            seekBar.setProgress(0);
-//        }
-
         super.onStop();
     }
 
     private void showStartingFragment() {
         Log.d(TAG, "showStartingFragment()");
-        FragmentSwitcher.switchToFragment(this, StartScreenFragment.newInstace(), R.id.main_placeholder);
+        boolean firstLaunch = true;
+
+        if (firstLaunch) {
+            FragmentSwitcher.switchToFragment(this, StoryFragment.newInstace(), R.id.main_placeholder);
+        } else {
+            FragmentSwitcher.switchToFragment(this, StartScreenFragment.newInstace(), R.id.main_placeholder);
+        }
     }
 
     public void setFragment(int fragmentId) {
@@ -97,6 +99,10 @@ public class MainActivity extends AppCompatActivity {
             case Config.FRAGMENT_LOSE:
                 selectedFragment = Config.FRAGMENT_LOSE;
                 FragmentSwitcher.switchToFragment(this, LoseFragment.newInstace(), R.id.main_placeholder);
+                break;
+            case Config.FRAGMENT_STORY:
+                selectedFragment = Config.FRAGMENT_STORY;
+                FragmentSwitcher.switchToFragment(this, StoryFragment.newInstace(), R.id.main_placeholder);
                 break;
             default:
                 selectedFragment = Config.FRAGTMENT_START;
