@@ -14,8 +14,8 @@ public class AnswerManager {
     public static List<Integer> getRandomCharacter(int correctAnswer) {
 
         int first = giveMeAnswerResource(correctAnswer);
-        int second = giveMeAnswerResource(new Random().nextInt(3 - 1) + 1);
-        int third = giveMeAnswerResource(new Random().nextInt(3 - 1) + 1);
+        int second = giveMeAnswerResource(new Random().nextInt(2));
+        int third = giveMeAnswerResource(new Random().nextInt(2));
 
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(first);

@@ -1,5 +1,7 @@
 package com.kitowcy.incrediblephysicsritual;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -12,13 +14,18 @@ import com.kitowcy.incrediblephysicsritual.fragments.CoilGameFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.QuestionBaseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.StartScreenFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.TimeUpCallback;
+import com.kitowcy.incrediblephysicsritual.model.RealmQuestion;
 import com.kitowcy.incrediblephysicsritual.utils.Config;
+import com.kitowcy.incrediblephysicsritual.utils.DataFromFileLoadedCallback;
 import com.kitowcy.incrediblephysicsritual.utils.FragmentSwitcher;
+import com.kitowcy.incrediblephysicsritual.utils.LoadData;
 
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 
@@ -38,6 +45,19 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         showStartingFragment();
+
+        SharedPreferences sharedPref = getSharedPreferences("data_loading", Context.MODE_PRIVATE);
+        if (!sharedPref.getBoolean("isLoaded", false)) {
+            Log.d(TAG, "copying files to DB!");
+            copyDataToRealm();
+        } else {
+            Realm realm = Realm.getInstance(this);
+            List<RealmQuestion> realmQuestionList = realm.where(RealmQuestion.class).findAll();
+            Log.d(TAG, "realm question list size: " + realmQuestionList.size());
+            for (RealmQuestion realmQuestion : realmQuestionList) {
+                Log.d(TAG, "RealmQuestion: " + realmQuestion.getAnswer() + ", " + realmQuestion.getQuestion());
+            }
+        }
     }
 
     @Override
@@ -72,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
                             @Override
                             public void onNext(Long aLong) {
-                                Log.d(TAG, "onNext: ");
+//                                Log.d(TAG, "onNext: ");
                                 seekBar.setProgress((int) (5000 - aLong * 10));
                                 if (aLong > 499) {
                                     seekBarSubscription.unsubscribe();
@@ -137,5 +157,21 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    private void copyDataToRealm() {
+        Log.d(TAG, "copyDataToRealm");
+
+        LoadData.loadDataFromCsv(this, new DataFromFileLoadedCallback() {
+            @Override
+            public void finishedDataLoading() {
+                Log.d(TAG, "finishedDataLoading!");
+
+                SharedPreferences sharedPref = getSharedPreferences("data_loading", Context.MODE_PRIVATE);
+                sharedPref.edit().putBoolean("isLoaded", true).apply();
+
+            }
+        });
+
     }
 }

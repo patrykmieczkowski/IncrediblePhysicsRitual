@@ -37,8 +37,6 @@ public class StartScreenFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        ((MainActivity)getActivity()).callTimer();
     }
 
     @OnClick(R.id.main_button_play)

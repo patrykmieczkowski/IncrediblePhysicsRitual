@@ -19,6 +19,9 @@ android {
         lintOptions {
             disable 'InvalidPackage'
         }
+        packagingOptions {
+            exclude 'META-INF/services/javax.annotation.processing.Processor'
+        }
     }
 }
 
@@ -28,6 +31,6 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.jakewharton:butterknife:7.0.1'
-    compile 'io.realm:realm-gradle-plugin:0.87.4'
+    compile 'io.realm:realm-android:0.87.4'
     compile 'io.reactivex:rxandroid:0.25.0'
 }

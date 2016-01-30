@@ -19,6 +19,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import io.realm.Realm;
 
 /**
  * Created by Patryk Mieczkowski on 30.01.16.
@@ -47,6 +48,8 @@ public class QuestionBaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.question_base_fragment, container, false);
         ButterKnife.bind(this, view);
+
+        Realm realm = Realm.getInstance(getActivity());
 
         int correctanswer = 1;
         List<Integer> arrayList = AnswerManager.getRandomCharacter(correctanswer);
