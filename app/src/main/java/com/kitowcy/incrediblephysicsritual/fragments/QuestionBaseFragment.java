@@ -22,11 +22,14 @@ import com.kitowcy.incrediblephysicsritual.utils.Config;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.realm.Realm;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -53,6 +56,9 @@ public class QuestionBaseFragment extends Fragment {
     @Bind(R.id.seekBar)
     SeekBar seekBar;
 
+    @Bind(R.id.score_text)
+    TextView scoreText;
+
     public static QuestionBaseFragment newInstace() {
         QuestionBaseFragment myFragment = new QuestionBaseFragment();
         return myFragment;
@@ -78,12 +84,26 @@ public class QuestionBaseFragment extends Fragment {
         RealmQuestion realmQuestion = realm.where(RealmQuestion.class).equalTo("id", selectedQ).findFirst();
 
         int correctanswer = realmQuestion.getAnswer();
-        List<Integer> arrayList = AnswerManager.getRandomCharacter(correctanswer);
+        List<Integer> mylist = new ArrayList<>();
+        for (int h = 0; h < 3; h++) {
+            mylist.add(h);
+        }
+        Log.d(TAG, "onViewCreated: list size before " + mylist.size());
+        mylist.remove(correctanswer);
+        Log.d(TAG, "onViewCreated: after deletion" + mylist.size());
+        Collections.shuffle(mylist);
+        int secondN = mylist.get(0);
+        int thirdN = mylist.get(1);
 
-        firstImage.setImageResource(arrayList.get(0));
-        secondImage.setImageResource(arrayList.get(1));
-        thirdImage.setImageResource(arrayList.get(2));
+        int first = AnswerManager.giveMeAnswerResource(correctanswer);
+        int second = AnswerManager.giveMeAnswerResource(secondN);
+        int third = AnswerManager.giveMeAnswerResource(thirdN);
 
+        firstImage.setImageResource(first);
+        secondImage.setImageResource(second);
+        thirdImage.setImageResource(third);
+
+        scoreText.setText(String.valueOf(mainActivity.questionNumber));
         questionText.setText(realmQuestion.getQuestion());
 
         realm.close();
@@ -95,9 +115,25 @@ public class QuestionBaseFragment extends Fragment {
         launchSeekBar(new TimeUpCallback() {
             @Override
             public void call() {
+                mainActivity.questionNumber = 0;
                 mainActivity.setFragment(Config.FRAGTMENT_START);
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        if (seekBarSubscription != null) {
+            seekBarSubscription.unsubscribe();
+            seekBar.setProgress(0);
+        }
+        super.onDestroy();
+    }
+
+    @OnClick(R.id.second_image)
+    public void onImageClick() {
+        ((MainActivity) getActivity()).questionNumber++;
+        ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
     }
 
     private void launchSeekBar(@Nullable final TimeUpCallback endCallback) {
