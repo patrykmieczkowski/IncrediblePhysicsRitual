@@ -6,7 +6,14 @@
     android:background="#FFFFFF"
     tools:context="com.kitowcy.incrediblephysicsritual.MainActivity">
 
-    <FrameLayout
+    <SeekBar
+        android:padding="10sp"
+        android:id="@+id/seekBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_below="@+id/seekBar"
         android:id="@+id/main_placeholder"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
