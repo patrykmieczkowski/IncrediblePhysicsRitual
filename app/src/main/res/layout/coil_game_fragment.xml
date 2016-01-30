@@ -6,11 +6,12 @@
     tools:context="com.kitowcy.incrediblephysicsritual.MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:text="Tesla Coil game !" />
 
     <ImageView
@@ -19,7 +20,10 @@
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
         android:src="@drawable/cewka" />
 
     <ImageView
@@ -28,17 +32,20 @@
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="20dp"
         android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:scaleType="fitXY"
         android:src="@drawable/cewka" />
 
     <ImageView
         android:id="@+id/piorun"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@id/cewka_left"
-        android:layout_toStartOf="@id/cewka_right"
+        android:layout_height="100dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
         android:src="@drawable/pior_1" />
 
 </RelativeLayout>
