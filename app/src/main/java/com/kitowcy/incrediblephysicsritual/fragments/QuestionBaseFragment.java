@@ -1,6 +1,8 @@
 package com.kitowcy.incrediblephysicsritual.fragments;
 
 import android.app.Fragment;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -178,10 +180,24 @@ public class QuestionBaseFragment extends Fragment {
 
     public void onImageClick(boolean status) {
 
+        SharedPreferences sharedPref = getActivity().getSharedPreferences("data_loading", Context.MODE_PRIVATE);
+
+
 //        Toast.makeText(getActivity(), String.valueOf(status), Toast.LENGTH_SHORT).show();
         if (status) {
             ((MainActivity) getActivity()).questionNumber++;
+            int myCurrentScore = ((MainActivity) getActivity()).questionNumber;
+
+//            if (myCurrentScore == Config.LEVEL_1) {
+//                if (!sharedPref.getBoolean("first_level", false)) {
+//                    sharedPref.edit().putBoolean("first_level", true).apply();
+//                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_UNLOCKED_CHAR);
+//                } else {
+//                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
+//                }
+//            } else {
             ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
+//            }
         } else {
             youLose();
         }
@@ -223,6 +239,6 @@ public class QuestionBaseFragment extends Fragment {
     private void youLose() {
         Log.d(TAG, "youLose :(");
 
-        ((MainActivity)getActivity()).setFragment(Config.FRAGMENT_LOSE);
+        ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_LOSE);
     }
 }

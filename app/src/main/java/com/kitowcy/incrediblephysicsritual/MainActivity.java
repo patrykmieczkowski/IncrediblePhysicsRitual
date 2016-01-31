@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
+import com.kitowcy.incrediblephysicsritual.fragments.CharacterUnlockedFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.LoseFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.MeetTheTeamFragment;
 import com.kitowcy.incrediblephysicsritual.fragments.QuestionBaseFragment;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         if (selectedFragment != Config.FRAGTMENT_START) {
+            questionNumber = 0;
             setFragment(Config.FRAGTMENT_START);
         } else {
             super.onBackPressed();
@@ -108,6 +110,10 @@ public class MainActivity extends AppCompatActivity {
             case Config.FRAGMENT_MEET_THE_TEAM:
                 selectedFragment = Config.FRAGMENT_MEET_THE_TEAM;
                 FragmentSwitcher.switchToFragment(this, MeetTheTeamFragment.newInstace(), R.id.main_placeholder);
+                break;
+            case Config.FRAGMENT_UNLOCKED_CHAR:
+                selectedFragment = Config.FRAGMENT_UNLOCKED_CHAR;
+                FragmentSwitcher.switchToFragment(this, CharacterUnlockedFragment.newInstace(), R.id.main_placeholder);
                 break;
             default:
                 selectedFragment = Config.FRAGTMENT_START;

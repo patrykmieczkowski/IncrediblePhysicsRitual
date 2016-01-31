@@ -18,8 +18,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
         android:layout_marginTop="65dp"
         android:layout_toStartOf="@+id/relativeLayout"
+        android:layout_toLeftOf="@id/relativeLayout"
         android:src="@drawable/button_add" />
 
     <RelativeLayout
@@ -27,8 +29,10 @@
         android:layout_width="300dp"
         android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="60dp">
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp">
 
         <ImageView
             android:id="@+id/transmutation_circle"
@@ -52,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -65,9 +70,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
         android:gravity="end"
         android:paddingBottom="5dp"
         android:paddingEnd="5dp"
+        android:paddingRight="5dp"
         tools:text="Answer to 5 questions in row to unlock next character!" />
 
 </RelativeLayout>
