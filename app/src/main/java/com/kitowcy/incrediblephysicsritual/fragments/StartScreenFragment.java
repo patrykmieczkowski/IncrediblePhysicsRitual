@@ -40,6 +40,9 @@ public class StartScreenFragment extends Fragment {
     @Bind(R.id.scoring_hint_text)
     TextView scoringHintText;
 
+    @Bind(R.id.main_button_play)
+    ImageView mainButtonPlay;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.start_screen_fragment, container, false);
@@ -79,22 +82,24 @@ public class StartScreenFragment extends Fragment {
     private void setImageForTransmutationCircle(int score) {
 
         String scorString = "";
-        if (score < 5) {
-            scorString = "Answer to 5 questions in raw to unlock next character!";
-        } else if (score >= 5 && score < 10) {
+        if (score < Config.LEVEL_0) {
+            transmutationCircle.setImageResource(R.drawable.circle_0);
+            scorString = "Answer to " + String.valueOf(Config.LEVEL_0) + " questions in row to unlock next character!";
+        } else if (score >= Config.LEVEL_0 && score < Config.LEVEL_1) {
             transmutationCircle.setImageResource(R.drawable.circle_1);
-            scorString = "Answer to 10 questions in raw to unlock next character!";
-        } else if (score >= 6 && score <= 14) {
+            scorString = "Answer to " + String.valueOf(Config.LEVEL_1) + " questions in row to unlock next character!";
+        } else if (score >= Config.LEVEL_1 && score < Config.LEVEL_2) {
             transmutationCircle.setImageResource(R.drawable.circle_2);
-            scorString = "Answer to 15 questions in raw to unlock next character!";
-        } else if (score >= 15 && score <= 29) {
+            scorString = "Answer to " + String.valueOf(Config.LEVEL_2) + " questions in row to unlock next character!";
+        } else if (score >= Config.LEVEL_2 && score < Config.LEVEL_3) {
             transmutationCircle.setImageResource(R.drawable.circle_3);
-            scorString = "Answer to 30 questions in raw to unlock next character!";
-        } else if (score >= 30 && score <= 49) {
+            scorString = "Answer to " + String.valueOf(Config.LEVEL_3) + " questions in row to unlock next character!";
+        } else if (score >= Config.LEVEL_3 && score < Config.LEVEL_4) {
             transmutationCircle.setImageResource(R.drawable.circle_4);
-            scorString = "Answer to 50 questions in raw to unlock next character!";
-        } else if (score >= 50 && score <= 99999) {
+            scorString = "Answer to " + String.valueOf(Config.LEVEL_4) + " questions in row to unlock next character!";
+        } else if (score >= Config.LEVEL_4) {
             transmutationCircle.setImageResource(R.drawable.circle_5);
+            mainButtonPlay.setImageResource(R.drawable.button_cthulhu);
             scorString = "Congratulations! You summoned Cthulhu!";
         }
 
