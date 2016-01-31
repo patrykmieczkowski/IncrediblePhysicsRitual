@@ -17,8 +17,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="50dp"
-        android:layout_marginTop="83dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginTop="65dp"
         android:layout_toStartOf="@+id/relativeLayout"
         android:src="@drawable/button_add" />
 
@@ -42,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:paddingBottom="10dp"
             android:src="@drawable/button_play" />
 
     </RelativeLayout>
@@ -67,6 +68,6 @@
         android:gravity="end"
         android:paddingBottom="5dp"
         android:paddingEnd="5dp"
-        tools:text="Answer to 5 questions in raw to unlock next character!" />
+        tools:text="Answer to 5 questions in row to unlock next character!" />
 
 </RelativeLayout>
