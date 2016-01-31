@@ -37,6 +37,9 @@ public class StartScreenFragment extends Fragment {
     @Bind(R.id.transmutation_circle)
     ImageView transmutationCircle;
 
+    @Bind(R.id.scoring_hint_text)
+    TextView scoringHintText;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.start_screen_fragment, container, false);
@@ -75,17 +78,26 @@ public class StartScreenFragment extends Fragment {
 
     private void setImageForTransmutationCircle(int score) {
 
-        if (score < 6) {
+        String scorString = "";
+        if (score < 5) {
+            scorString = "Answer to 5 questions in raw to unlock next character!";
+        } else if (score >= 5 && score < 10) {
             transmutationCircle.setImageResource(R.drawable.circle_1);
-        } else if (score >= 6 && score <= 15) {
+            scorString = "Answer to 10 questions in raw to unlock next character!";
+        } else if (score >= 6 && score <= 14) {
             transmutationCircle.setImageResource(R.drawable.circle_2);
-        } else if (score >= 16 && score <= 30) {
+            scorString = "Answer to 15 questions in raw to unlock next character!";
+        } else if (score >= 15 && score <= 29) {
             transmutationCircle.setImageResource(R.drawable.circle_3);
-        } else if (score >= 31 && score <= 50) {
+            scorString = "Answer to 30 questions in raw to unlock next character!";
+        } else if (score >= 30 && score <= 49) {
             transmutationCircle.setImageResource(R.drawable.circle_4);
-        } else if (score >= 51 && score <= 80) {
+            scorString = "Answer to 50 questions in raw to unlock next character!";
+        } else if (score >= 50 && score <= 99999) {
             transmutationCircle.setImageResource(R.drawable.circle_5);
+            scorString = "Congratulations! You summoned Cthulhu!";
         }
 
+        scoringHintText.setText(scorString);
     }
 }

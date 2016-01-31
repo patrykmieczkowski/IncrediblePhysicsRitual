@@ -1,35 +1,42 @@
-Imagination is more important than knowledge.;0
-Gravitation is not responsible for people falling in love.;0
-I want to know God's thoughts the rest a re details.;0
-The hardest thing in the world to understand is the income tax.;0
-Reality is merely an illusion, albeit a very persistent one.;0
-The only real valuable thing is intuition.;0
-A person starts to live when he can live outside himself.;0
-I am convinced that He (God) does not play dice.;0
-God is subtle but he is not malicious.;0
-Weakness of attitude becomes weakness of character.;0
-I never think of the future. It comes soon enough.;0
-The eternal mystery of the world is its comprehensibility.;0
-Sometimes one pays most for the things one gets for nothing.;0
-Science without religion is lame. Religion without science is blind.;0
-Of all things, I liked books best;1
-What one man calls God, another calls the laws of physics;1
-If I have seen further it is by standing on the shoulders of Giants.;2
-I can calculate the motion of heavenly bodies but not the madness of people.;2
-Tact is the knack of making a point without making an enemy.;2
-Men build too many walls and not enough bridges.;2
-What we know is a drop, what we don't know is an ocean.;2
-Nature is pleased with simplicity. And nature is no dummy;2
-Gravity explains the motions of the planets, but it cannot explain who sets the planets in motion.;2
-and to every action there is always an equal and opposite or contrary, reaction;2
-No great discovery was ever made without a bold guess.;2
-What goes up must come down.;2
-Live your life as an Exclamation rather than an Explanation;2
-You have to make the rules, not follow them;2
-To know that we know what we know, and to know that we do not know what we do not know, that is true knowledge.;3
-At rest, however, in the middle of everything is the sun.;3
-Mathematics is written for mathematicians.;3
-Finally we shall place the Sun himself at the center of the Universe.;3
-Near the sun is the center of the universe.;3
-The earth also is spherical, since it presses upon its center from every direction.;3
-Pouring forth its seas everywhere, then, the ocean envelops the earth and fills its deeper chasms.;3
+„Imagination is more important than knowledge.”;0
+general theory of relativity;0
+special theory of relativity;0
+mass – energy equivalence;0
+law of the photoelectric effect;0
+worked in patent office;0
+„Gravitation is not responsible for people falling in love.”;0
+„I want to know God's thoughts the rest a re details.”;0
+„The hardest thing in the world to understand is the income tax.”;0
+„The only real valuable thing is intuition.”;0
+„I am convinced that He (God) does not play dice.”;0
+„Science without religion is lame. Religion without science is blind.”;0
+worked for Thomas Edison;1
+AC induction motor and transformer;1
+known for high voltage experiments and demonstrations;1
+experimented with X-rays and radio waves;1
+worked on wireless transmission tower that was never completed;1
+„Of all things, I liked books best”;1
+„What one man calls God, another calls the laws of physics”;1
+„Nature may reach the same result in many ways.”;1
+published Philosophae Naturalis Principia Mathematica;2
+law of universal gravitation;2
+three laws of motion;2
+built one of the first practical telescope;2
+inspired by watching an apple fall from a tree;2
+„Plato is my friend - Aristotle is my friend - but my greatest friend is truth”;2
+„If I have seen further it is by standing on the shoulders of Giants.”;2
+„I can calculate the motion of heavenly bodies but not the madness of people.”;2
+„Men build too many walls and not enough bridges.”;2
+„What we know is a drop, what we don't know is an ocean.”;2
+„Nature is pleased with simplicity. And nature is no dummy”;2
+„Gravity explains the motions of the planets, but it cannot explain who sets the planets in motion.”;2
+„No great discovery was ever made without a bold guess.”;2
+„What goes up must come down.”;2
+„You have to make the rules, not follow them”;2
+heliocentrism theory;3
+published On the Revolutions of Celestial Spheres;3
+was astronomer, physician, economist, translator, mathematician, artist and diplomat;3
+„At rest, however, in the middle of everything is the sun.”;3
+„Mathematics is written for mathematicians.”;3
+„Finally we shall place the Sun himself at the center of the Universe.”;3
+„Near the sun is the center of the universe.”;3

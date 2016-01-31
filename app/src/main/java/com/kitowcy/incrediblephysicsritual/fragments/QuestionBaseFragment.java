@@ -178,7 +178,7 @@ public class QuestionBaseFragment extends Fragment {
 
     public void onImageClick(boolean status) {
 
-        Toast.makeText(getActivity(), String.valueOf(status), Toast.LENGTH_SHORT).show();
+//        Toast.makeText(getActivity(), String.valueOf(status), Toast.LENGTH_SHORT).show();
         if (status) {
             ((MainActivity) getActivity()).questionNumber++;
             ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
