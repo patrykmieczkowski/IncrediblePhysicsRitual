@@ -182,22 +182,35 @@ public class QuestionBaseFragment extends Fragment {
 
         SharedPreferences sharedPref = getActivity().getSharedPreferences("data_loading", Context.MODE_PRIVATE);
 
-
 //        Toast.makeText(getActivity(), String.valueOf(status), Toast.LENGTH_SHORT).show();
         if (status) {
             ((MainActivity) getActivity()).questionNumber++;
             int myCurrentScore = ((MainActivity) getActivity()).questionNumber;
 
-//            if (myCurrentScore == Config.LEVEL_1) {
-//                if (!sharedPref.getBoolean("first_level", false)) {
-//                    sharedPref.edit().putBoolean("first_level", true).apply();
-//                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_UNLOCKED_CHAR);
-//                } else {
-//                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
-//                }
-//            } else {
-            ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
-//            }
+            if (myCurrentScore == Config.LEVEL_0) {
+                if (!sharedPref.getBoolean("first_level", false)) {
+                    sharedPref.edit().putBoolean("first_level", true).apply();
+                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_UNLOCKED_CHAR);
+                } else {
+                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
+                }
+            } else if (myCurrentScore == Config.LEVEL_1) {
+                if (!sharedPref.getBoolean("second_level", false)) {
+                    sharedPref.edit().putBoolean("second_level", true).apply();
+                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_UNLOCKED_CHAR);
+                } else {
+                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
+                }
+            } else if (myCurrentScore == Config.LEVEL_2) {
+                if (!sharedPref.getBoolean("third_level", false)) {
+                    sharedPref.edit().putBoolean("third_level", true).apply();
+                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_UNLOCKED_CHAR);
+                } else {
+                    ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
+                }
+            } else {
+                ((MainActivity) getActivity()).setFragment(Config.FRAGMENT_QUESTION_BASE);
+            }
         } else {
             youLose();
         }
