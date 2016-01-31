@@ -40,7 +40,21 @@ was astronomer, physician, economist, translator, mathematician, artist and dipl
 „Mathematics is written for mathematicians.”;3
 „Finally we shall place the Sun himself at the center of the Universe.”;3
 „Near the sun is the center of the universe.”;3
-Related to half-dead-living cat;5
+Won the 1911 Nobel Prize in Chemistry.;4
+Born in Warsaw, 1867;4
+Developed radium;4
+Developed polonium;4
+Assisted in battlefield surgeons during Word War I;4
+Related to radioactivity;4
+Left Poland in 1891 for France.;4
+„Be less curious about people and more curious about ideas.”;4
+„I am among those who think that science has great beauty.”;4
+„Nothing in life is to be feared, it is only to be understood.”;4
+„I was taught that the way of progress was neither swift nor easy.”;4
+„All my life through, the new sights of Nature made me rejoice like a child.”;4
+Directed the installation of 20 mobile radiological vehicles;4
+Was a professor at University of Paris;4
+Related to half-dead, half-living cat;5
 Received Nobel Prize together with Paul Dirac;5
 Austrian quantum theory physicist;5
 „I insist upon the view that 'all is waves'.”;5
@@ -59,3 +73,4 @@ Created first industrial research laboratory;6
 „To invent, you need a good imagination and a pile of junk.”;6
 „I never did a day's work in my life, it was all fun.”;6
 „I owe my success to the fact that I never had a clock in my workroom.”;6
+„I will start writing my thesis tomorrow”;7
